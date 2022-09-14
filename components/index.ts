@@ -6,3 +6,4 @@ export { default as Navbar } from "./Navbar";
 export { default as PopularCollection } from "./PopularCollection";
 export { default as Services } from "./Services";
 export { default as Spaces } from "./Spaces";
+export { default as Footer } from "./Footer";

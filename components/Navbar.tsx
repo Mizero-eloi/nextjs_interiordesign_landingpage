@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { navList } from "../utils/constants";
 import Logo from "../utils/logo.png";
 import profile from "../utils/profile.jpg";
@@ -10,8 +10,17 @@ import { ImCancelCircle } from "react-icons/im";
 
 const Navbar = () => {
   const [isShowSideBar, setIsShowSideBar] = useState(false);
+
+  useEffect(() => {
+    if (isShowSideBar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isShowSideBar]);
+
   return (
-    <div className="md:px-20 px-10  flex justify-between items-center text-gray-500 hover:text-gray-700">
+    <div className="md:px-20 px-10  flex justify-between items-center text-gray-500 hover:text-gray-700 bg-white sticky top-0">
       {/* logo */}
       <Link href="/">
         <div className="w-[70px] md:w-[75px] ">
@@ -32,7 +41,7 @@ const Navbar = () => {
       </div>
 
       {isShowSideBar && (
-        <div className="absolute bg-blue-500 w-full h-[100vh] top-0 left-0 p-3">
+        <div className="absolute bg-white z-50 w-full h-[100vh] top-0 left-0 p-3">
           <button
             className="text-xl float-right mr-3 mt-3"
             onClick={() => setIsShowSideBar(false)}
@@ -42,7 +51,11 @@ const Navbar = () => {
 
           <ul className="pt-3 flex flex-col gap-5 text-xl  w-1/2 m-auto mt-24">
             {navList.map((i) => (
-              <a key={i} href={`/#${i}`}>
+              <a
+                key={i}
+                href={`/#${i}`}
+                onClick={() => setIsShowSideBar(false)}
+              >
                 <li>{i}</li>
               </a>
             ))}
