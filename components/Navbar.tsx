@@ -20,7 +20,7 @@ const Navbar = () => {
   }, [isShowSideBar]);
 
   return (
-    <div className="md:px-20 px-10  flex justify-between items-center text-gray-500 hover:text-gray-700 bg-white sticky top-0">
+    <div className="md:px-20 px-10  flex justify-between items-center text-gray-500 hover:text-gray-700 bg-white sticky top-0 z-50">
       {/* logo */}
       <Link href="/">
         <div className="w-[70px] md:w-[75px] ">
